@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import axios from "axios";
+import Papa from "papaparse";
 class FetchJson extends Component {
   state = {
     countries: [],
   };
 
-  async componentDidMount() {
-    let json = await axios.get("https://api.covid19api.com/summary");
-    this.setState({ countries: json.data.Countries });
+  componentDidMount() {
+    const url =
+      "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_country.csv";
+
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      complete: (results) => {
+        let newData = results.data.filter(function (params) {
+          return params.Country_Region !== "";
+        });
+        console.log(newData);
+        this.setState({ countries: newData });
+      },
+    });
   }
   render() {
     return (
@@ -17,25 +29,27 @@ class FetchJson extends Component {
           <div className="card-body">
             <h5 className="card-title">Covid 19 Global Report</h5>
             <p className="card-text">List of Global report for Covid19</p>
-            <a href="#" className="btn btn-primary">
+            {/* <a href="#" className="btn btn-primary">
               Go somewhere
-            </a>
+            </a> */}
           </div>
           <div className="card-footer text-muted">2 days ago</div>
         </div>
         {this.state.countries.map((country) => (
-          <div>
+          <div key={country.Country_Region}>
             <ul className="list-group">
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                {country.Country.length === 0 ? "NO Country" : country.Country}
+                {country.Country_Region.length === 0
+                  ? "NO Country"
+                  : country.Country_Region}
                 <span className="badge badge-primary badge-pill">
-                  {country.TotalConfirmed}
+                  {country.Confirmed}
                 </span>
                 <span className="badge badge-success badge-pill">
-                  {country.TotalRecovered}
+                  {country.Recovered}
                 </span>
                 <span className="badge badge-danger badge-pill">
-                  {country.NewDeaths}
+                  {country.Deaths}
                 </span>
               </li>
             </ul>
