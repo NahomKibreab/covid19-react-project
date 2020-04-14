@@ -13,10 +13,10 @@ class FetchJson extends Component {
       download: true,
       header: true,
       complete: (results) => {
+        console.table(results.data);
         let newData = results.data.filter(function (params) {
           return params.Country_Region !== "";
         });
-        console.log(newData);
         this.setState({ countries: newData });
       },
     });
@@ -39,9 +39,7 @@ class FetchJson extends Component {
           <div key={country.Country_Region}>
             <ul className="list-group">
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                {country.Country_Region.length === 0
-                  ? "NO Country"
-                  : country.Country_Region}
+                {country.Country_Region}
                 <span className="badge badge-primary badge-pill">
                   {country.Confirmed}
                 </span>
