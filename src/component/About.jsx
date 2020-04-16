@@ -9,6 +9,7 @@ class About extends Component {
         About Page!
         <button onClick={this.notify}>Notify !</button>
         <ToastContainer />
+        <div className="footer">Footer</div>
       </div>
     );
   }
