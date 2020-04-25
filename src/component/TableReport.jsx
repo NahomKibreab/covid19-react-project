@@ -8,17 +8,17 @@ class TableReport extends Component {
         <table className="table table-striped table-dark table-hover">
           <thead>
             <tr>
-              <th colspan="5">
-                <div class="input-group flex-nowrap">
-                  <div class="input-group-prepend">
+              <th colSpan="5">
+                <div className="input-group flex-nowrap">
+                  <div className="input-group-prepend">
                     <span></span>
-                    <span class="input-group-text" id="basic-addon1">
+                    <span className="input-group-text" id="basic-addon1">
                       Seach Country
                     </span>
                   </div>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="search by name"
                     aria-label="search by name"
                     aria-describedby="basic-addon1"
@@ -27,8 +27,13 @@ class TableReport extends Component {
               </th>
             </tr>
             <tr>
-              <th scope="col">Country</th>
-              <th scope="col">Confirmed</th>
+              <th scope="col" onClick={this.props.onSortByCountryName}>
+                Country
+                <span hidden={true}> &#8681;</span>
+              </th>
+              <th scope="col" onClick={this.props.onSortByConfirmed}>
+                Confirmed
+              </th>
               <th scope="col">Deaths</th>
               <th scope="col">Recovered</th>
               <th scope="col">Active</th>
@@ -36,7 +41,7 @@ class TableReport extends Component {
           </thead>
           <tbody>
             {this.props.report.map((country) => (
-              <tr key={country.ISO3}>
+              <tr key={country.UID}>
                 <td>{country.Country_Region}</td>
                 <td>
                   <span className="badge badge-primary badge-pill">
