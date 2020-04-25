@@ -61,7 +61,7 @@ class FetchJson extends Component {
       <div className="container">
         {this.totalConfirmed(this.state.countries)}
         <div className="card text-center">
-          <div className="card-header">Featured</div>
+          <div className="card-header">Featured Covid19</div>
           <div className="card-body">
             <h5 className="card-title">Covid 19 Global Report</h5>
             <p className="card-text">
