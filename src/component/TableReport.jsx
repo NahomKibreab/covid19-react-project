@@ -36,7 +36,7 @@ class TableReport extends Component {
               </th>
               <th scope="col">Deaths</th>
               <th scope="col">Recovered</th>
-              <th scope="col">Active</th>
+              {/* <th scope="col">Active</th> */}
             </tr>
           </thead>
           <tbody>
@@ -58,11 +58,11 @@ class TableReport extends Component {
                     {country.Deaths}
                   </span>
                 </td>
-                <td>
+                {/* <td>
                   <span className="badge badge-info badge-pill">
                     {country.Active}
                   </span>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
