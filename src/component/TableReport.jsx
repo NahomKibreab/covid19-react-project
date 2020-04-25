@@ -11,7 +11,6 @@ class TableReport extends Component {
               <th colSpan="4">
                 <div className="input-group flex-nowrap">
                   <div className="input-group-prepend">
-                    <span></span>
                     <span className="input-group-text" id="basic-addon1">
                       <svg
                         className="bi bi-search"
@@ -37,8 +36,8 @@ class TableReport extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="search by name"
-                    aria-label="search by name"
+                    placeholder="search by country name"
+                    aria-label="search by country name"
                     aria-describedby="basic-addon1"
                   />
                 </div>
@@ -50,10 +49,10 @@ class TableReport extends Component {
                 <span hidden={true}> &#8681;</span>
               </th>
               <th scope="col" onClick={this.props.onSortByConfirmed}>
-                Confirmed
+                Cases
               </th>
-              <th scope="col">Deaths</th>
               <th scope="col">Recovered</th>
+              <th scope="col">Deaths</th>
               {/* <th scope="col">Active</th> */}
             </tr>
           </thead>
