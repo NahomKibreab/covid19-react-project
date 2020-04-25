@@ -38,7 +38,7 @@ class FetchJson extends Component {
   };
   sortByConfirmed = (A, B) => {
     if (Number(B.Confirmed) > Number(A.Confirmed)) return 1;
-    else if (B.Confirmed < A.Confirmed) return -1;
+    else if (Number(B.Confirmed) < Number(A.Confirmed)) return -1;
     else return 0;
   };
   handleOnSortByConfirmed = (event) => {
