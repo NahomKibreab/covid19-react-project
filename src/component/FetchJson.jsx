@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Papa from "papaparse";
 import TableReport from "./TableReport";
+import WorldFlags from "./WorldFlags";
 class FetchJson extends Component {
   state = {
     countries: [],
@@ -28,7 +29,7 @@ class FetchJson extends Component {
     const totals = [];
     for (let i = 0; i <= total.length; i++) {
       // totalConfirmed += this.state.countries[1][]
-      console.log(total[i]);
+      //console.log(total[i]);
     }
   };
   sortByCountryName = (A, B) => {
@@ -78,6 +79,8 @@ class FetchJson extends Component {
           </div>
           <div className="card-footer text-muted">2 days ago</div>
         </div>
+
+        <WorldFlags country="Eritrea" />
 
         <TableReport
           report={this.state.countries}
