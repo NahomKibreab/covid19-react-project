@@ -4,9 +4,9 @@ const Navigation = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
+        <NavLink className="navbar-brand" exact to="/">
           Navbar
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,39 +33,41 @@ const Navigation = () => {
               </NavLink>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <NavLink
                 className="nav-link dropdown-toggle"
-                href="#"
                 id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                exact
+                to="/"
               >
                 Dropdown
-              </a>
+              </NavLink>
+
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/">
                   Action
-                </a>
-                <a className="dropdown-item" href="#">
+                </NavLink>
+                <NavLink className="dropdown-item" to="/">
                   Another action
-                </a>
+                </NavLink>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
+                <NavLink className="dropdown-item" to="/">
                   Something else here
-                </a>
+                </NavLink>
               </div>
             </li>
             <li className="nav-item">
-              <a
+              <NavLink
                 className="nav-link disabled"
-                href="#"
+                to="/"
                 tabIndex="-1"
                 aria-disabled="true"
               >
                 Disabled
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

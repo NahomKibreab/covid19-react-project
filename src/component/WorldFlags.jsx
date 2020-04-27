@@ -2,23 +2,22 @@ import React, { Component } from "react";
 import Countries from "world_countries_lists/data/en/countries.json";
 
 class WorldFlags extends Component {
-  state = {};
-  componentDidMount() {}
-  flags = () => {
-    // the code you're looking for
-    const needle = this.props.country;
+  state = {
+    topCountry: [],
+  };
 
+  flags = (country) => {
     // // iterate over each element in the array
     for (let i = 0; i < Countries.length; i++) {
       // look for the entry with a matching `code` value
-      if (Countries[i].name === needle) {
+      if (Countries[i].name === country) {
         // we found it
         // obj[i].name is the matched result
-        console.log(Countries[i].name);
         return Countries[i].alpha2;
       }
     }
   };
+
   render() {
     return (
       <div>
@@ -41,7 +40,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags() +
+                  this.flags("Eritrea") +
                   "-flag.gif"
                 }
                 className="d-block w-100"
@@ -58,7 +57,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags() +
+                  this.flags("Eritrea") +
                   "-flag.gif"
                 }
                 className="d-block w-100"
@@ -73,7 +72,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags() +
+                  this.flags("Eritrea") +
                   "-flag.gif"
                 }
                 className="d-block w-100"

@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 class TableReport extends Component {
-  state = {};
+  state = {
+    country: [],
+    seachCountry: [],
+  };
   i = 1;
+
+  handleChange = (e) => {
+    console.log(e.target.value.toLowerCase());
+    const data = [...this.props.report];
+    const findCountry = data.filter(function (params) {
+      return (
+        params.Country_Region.toLowerCase() == e.target.value.toLowerCase()
+      );
+    });
+    this.setState({ seachCountry: findCountry });
+    console.log(findCountry);
+  };
   render() {
+    const { report } = this.props;
     return (
       <div>
         <table className="table table-striped table-dark table-hover">
@@ -39,6 +55,7 @@ class TableReport extends Component {
                     placeholder="search by country name"
                     aria-label="search by country name"
                     aria-describedby="basic-addon1"
+                    onChange={this.handleChange}
                   />
                 </div>
               </th>
@@ -48,40 +65,83 @@ class TableReport extends Component {
                 Country
                 <span hidden={true}> &#8681;</span>
               </th>
-              <th scope="col" onClick={this.props.onSortByConfirmed}>
+              <th
+                scope="col"
+                onClick={this.props.onSortByConfirmed}
+                className="bg-primary"
+              >
                 Cases
               </th>
-              <th scope="col">Recovered</th>
-              <th scope="col">Deaths</th>
+              <th
+                scope="col"
+                onClick={this.props.onSortByRecovered}
+                className="bg-success"
+              >
+                Recovered
+              </th>
+              <th
+                scope="col"
+                onClick={this.props.onSortByDeaths}
+                className="bg-danger"
+              >
+                Deaths
+              </th>
               {/* <th scope="col">Active</th> */}
             </tr>
           </thead>
           <tbody>
-            {this.props.report.map((country) => (
-              <tr key={country.UID}>
-                <td>{country.Country_Region}</td>
-                <td>
-                  <span className="badge badge-primary badge-pill">
-                    {country.Confirmed}
-                  </span>
-                </td>
-                <td>
-                  <span className="badge badge-success badge-pill">
-                    {country.Recovered}
-                  </span>
-                </td>
-                <td>
-                  <span className="badge badge-danger badge-pill">
-                    {country.Deaths}
-                  </span>
-                </td>
-                {/* <td>
-                  <span className="badge badge-info badge-pill">
-                    {country.Active}
-                  </span>
-                </td> */}
-              </tr>
-            ))}
+            {this.state.seachCountry.length > 0
+              ? this.state.seachCountry.map((country) => (
+                  <tr key={country.UID}>
+                    <td>{country.Country_Region}</td>
+                    <td>
+                      <span className="badge badge-primary badge-pill">
+                        {country.Confirmed}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="badge badge-success badge-pill">
+                        {country.Recovered}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="badge badge-danger badge-pill">
+                        {country.Deaths}
+                      </span>
+                    </td>
+                    {/* <td>
+                    <span className="badge badge-info badge-pill">
+                      {country.Active}
+                    </span>
+                  </td> */}
+                  </tr>
+                ))
+              : report.map((country) => (
+                  <tr key={country.UID}>
+                    <td>{country.Country_Region}</td>
+                    <td>
+                      <span className="badge badge-primary badge-pill">
+                        {country.Confirmed}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="badge badge-success badge-pill">
+                        {country.Recovered}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="badge badge-danger badge-pill">
+                        {country.Deaths}
+                      </span>
+                    </td>
+                    {/* <td>
+                    <span className="badge badge-info badge-pill">
+                      {country.Active}
+                    </span>
+                  </td> */}
+                  </tr>
+                ))}
+            {}
           </tbody>
         </table>
       </div>
