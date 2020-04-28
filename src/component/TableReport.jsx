@@ -1,24 +1,52 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import Country from "./Country";
+import TableList from "./TableList";
 class TableReport extends Component {
-  state = {
-    country: [],
-    seachCountry: [],
+  // state = {
+  //   country: [],
+  //   seachCountry: [],
+  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      country: [],
+      seachCountry: [],
+    };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return { country: props.report };
+  }
+  sortByCountryName = (A, B) => {
+    console.log("sortByCountryName");
+    if (A.Country_Region > B.Country_Region) return 1;
+    else if (A.Country_Region < B.Country_Region) return -1;
+    else return 0;
   };
-  i = 1;
 
   handleChange = (e) => {
-    console.log(e.target.value.toLowerCase());
-    const data = [...this.props.report];
-    const findCountry = data.filter(function (params) {
-      return (
-        params.Country_Region.toLowerCase() == e.target.value.toLowerCase()
-      );
-    });
-    this.setState({ seachCountry: findCountry });
-    console.log(findCountry);
+    console.log(e.target.value);
+    if (e.target.value.length > 0) {
+      const data = [...this.props.report];
+      const findCountry = data.filter(function (params) {
+        return (
+          params.Country_Region.toLowerCase().indexOf(
+            e.target.value.toLowerCase()
+          ) >= 0
+        );
+      });
+      this.setState({ seachCountry: findCountry });
+    } else {
+      this.setState({ seachCountry: [] });
+    }
+  };
+
+  onCountryClicked = (e) => {
+    console.log(e);
+    return e;
   };
   render() {
-    const { report } = this.props;
     return (
       <div>
         <table className="table table-striped table-dark table-hover">
@@ -90,58 +118,13 @@ class TableReport extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.seachCountry.length > 0
-              ? this.state.seachCountry.map((country) => (
-                  <tr key={country.UID}>
-                    <td>{country.Country_Region}</td>
-                    <td>
-                      <span className="badge badge-primary badge-pill">
-                        {country.Confirmed}
-                      </span>
-                    </td>
-                    <td>
-                      <span className="badge badge-success badge-pill">
-                        {country.Recovered}
-                      </span>
-                    </td>
-                    <td>
-                      <span className="badge badge-danger badge-pill">
-                        {country.Deaths}
-                      </span>
-                    </td>
-                    {/* <td>
-                    <span className="badge badge-info badge-pill">
-                      {country.Active}
-                    </span>
-                  </td> */}
-                  </tr>
-                ))
-              : report.map((country) => (
-                  <tr key={country.UID}>
-                    <td>{country.Country_Region}</td>
-                    <td>
-                      <span className="badge badge-primary badge-pill">
-                        {country.Confirmed}
-                      </span>
-                    </td>
-                    <td>
-                      <span className="badge badge-success badge-pill">
-                        {country.Recovered}
-                      </span>
-                    </td>
-                    <td>
-                      <span className="badge badge-danger badge-pill">
-                        {country.Deaths}
-                      </span>
-                    </td>
-                    {/* <td>
-                    <span className="badge badge-info badge-pill">
-                      {country.Active}
-                    </span>
-                  </td> */}
-                  </tr>
-                ))}
-            {}
+            <TableList
+              country={
+                this.state.seachCountry.length > 0
+                  ? this.state.seachCountry.map((country) => country)
+                  : this.state.country.map((country) => country)
+              }
+            />
           </tbody>
         </table>
       </div>

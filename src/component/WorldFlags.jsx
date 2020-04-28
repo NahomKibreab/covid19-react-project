@@ -3,22 +3,27 @@ import Countries from "world_countries_lists/data/en/countries.json";
 
 class WorldFlags extends Component {
   state = {
-    topCountry: [],
+    topCountries: this.props.topCountries,
   };
 
   flags = (country) => {
     // // iterate over each element in the array
     for (let i = 0; i < Countries.length; i++) {
       // look for the entry with a matching `code` value
-      if (Countries[i].name === country) {
+      if (Countries[i].alpha3 === country) {
         // we found it
         // obj[i].name is the matched result
         return Countries[i].alpha2;
       }
     }
   };
-
   render() {
+    const { topCountries } = this.state;
+
+    if (topCountries === null) {
+      return null;
+    }
+
     return (
       <div>
         <div
@@ -40,7 +45,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags("Eritrea") +
+                  this.flags(topCountries[0]) +
                   "-flag.gif"
                 }
                 className="d-block w-100"
@@ -57,7 +62,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags("Eritrea") +
+                  this.flags(topCountries[1]) +
                   "-flag.gif"
                 }
                 className="d-block w-100"
@@ -72,7 +77,7 @@ class WorldFlags extends Component {
               <img
                 src={
                   "https://www.worldometers.info/img/flags/" +
-                  this.flags("Eritrea") +
+                  this.flags(topCountries[2]) +
                   "-flag.gif"
                 }
                 className="d-block w-100"

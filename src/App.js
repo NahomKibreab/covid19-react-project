@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import About from "./component/About";
 import Navigation from "./component/Navigation";
 import Footer from "./component/Footer";
+import Country from "./component/Country";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route path="/about" component={About} />
+        <Route path="/country" component={Country} />
         <Route path="/" component={FetchJson} />
       </Switch>
       <Footer />

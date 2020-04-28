@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import Papa from "papaparse";
 import TableReport from "./TableReport";
 import WorldFlags from "./WorldFlags";
+import Graph from "./Graph";
+
 class FetchJson extends Component {
   state = {
     countries: [],
+    topCountries: null,
     totalConfirmed: 0,
   };
 
@@ -19,6 +22,7 @@ class FetchJson extends Component {
         let newData = results.data.filter(function (params) {
           return params.Country_Region !== "";
         });
+
         const sortedData = newData.sort(this.sortByCountryName);
         let totalConfirmed = 0;
 
@@ -26,6 +30,18 @@ class FetchJson extends Component {
           totalConfirmed += Number(total.Confirmed);
         });
 
+        //Top three Country with the highest cases
+        const sortedTopCountry = newData.sort(this.sortByConfirmed);
+        let topCountry = [];
+        for (let i = 0; i < 3; i++) {
+          topCountry.push(sortedTopCountry[i]);
+        }
+
+        let topThree = [];
+        topCountry.map((country) => {
+          topThree.push(country.ISO3.toLowerCase());
+        });
+        this.setState({ topCountries: topThree });
         this.setState({
           countries: sortedData,
           totalConfirmed: totalConfirmed,
@@ -81,6 +97,11 @@ class FetchJson extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   render() {
+    const { topCountries } = this.state;
+
+    if (topCountries === null) {
+      return null;
+    }
     return (
       <div className="container">
         <div className="card text-center">
@@ -104,8 +125,8 @@ class FetchJson extends Component {
             {this.numberWithCommas(this.state.totalConfirmed)}
           </div>
         </div>
-
-        <WorldFlags />
+        <Graph />
+        {/* <WorldFlags topCountries={this.state.topCountries} /> */}
 
         <TableReport
           report={this.state.countries}
