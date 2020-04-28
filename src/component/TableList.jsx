@@ -1,13 +1,18 @@
 import React, { Component } from "react";
+let i = 0;
 class TableList extends Component {
   state = {};
+
   render() {
     const { country } = this.props;
     return (
       <React.Fragment>
         {country.map((country) => (
           <tr key={country.UID}>
-            <td>{country.Country_Region}</td>
+            <td>
+              {(i += 1)}
+              {". " + country.Country_Region}
+            </td>
             <td>
               <span className="badge badge-primary badge-pill">
                 {country.Confirmed}
