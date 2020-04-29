@@ -52,7 +52,7 @@ class TableReport extends Component {
         <table className="table table-striped table-dark table-hover">
           <thead>
             <tr>
-              <th colSpan="4">
+              <th colSpan="5">
                 <div className="input-group flex-nowrap">
                   <div className="input-group-prepend">
                     <span className="input-group-text" id="basic-addon1">
@@ -89,6 +89,7 @@ class TableReport extends Component {
               </th>
             </tr>
             <tr>
+              <th scope="col"></th>
               <th scope="col" onClick={this.props.onSortByCountryName}>
                 Country
                 <span hidden={true}> &#8681;</span>

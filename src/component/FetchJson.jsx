@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Papa from "papaparse";
 import TableReport from "./TableReport";
-import WorldFlags from "./WorldFlags";
 import Graph from "./Graph";
 
 class FetchJson extends Component {

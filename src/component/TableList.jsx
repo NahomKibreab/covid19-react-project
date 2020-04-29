@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+
 class TableList extends Component {
   state = {};
 
@@ -9,8 +11,18 @@ class TableList extends Component {
       <React.Fragment>
         {country.map((country) => (
           <tr key={country.UID}>
-            <td>{counter++ + ". " + country.Country_Region}</td>
-            <td>
+            <th scope="row">{counter++}</th>
+            <NavLink
+              style={{ color: "white" }}
+              exact
+              to={{
+                pathname: "/country",
+                search: "?id=" + country.UID,
+              }}
+            >
+              <td>{country.Country_Region}</td>
+            </NavLink>
+            <td key={country.name}>
               <span className="badge badge-primary badge-pill">
                 {country.Confirmed}
               </span>

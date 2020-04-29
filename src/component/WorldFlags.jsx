@@ -1,123 +1,56 @@
 import React, { Component } from "react";
-import Countries from "world_countries_lists/data/en/countries.json";
+import Countries from "./countries.json";
 
 class WorldFlags extends Component {
-  state = {
-    topCountries: this.props.topCountries,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      country: "",
+    };
+  }
 
-  flags = (country) => {
+  static getDerivedStateFromProps(props, state) {
+    return { country: props.country };
+  }
+  flags = (x) => {
     // // iterate over each element in the array
+    const country = x;
     for (let i = 0; i < Countries.length; i++) {
       // look for the entry with a matching `code` value
-      if (Countries[i].alpha3 === country) {
+      const countryName = "" + Countries[i].name;
+      if (
+        countryName.toLowerCase() === country ||
+        Countries[i].alpha2 === country ||
+        Countries[i].alpha3 === country
+      ) {
         // we found it
         // obj[i].name is the matched result
-        return Countries[i].alpha2;
+        let x = "" + Countries[i].alpha2;
+
+        return x.toUpperCase();
       }
     }
   };
+
+  emptyImage = () => {
+    return "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg";
+  };
   render() {
-    const { topCountries } = this.state;
-
-    if (topCountries === null) {
-      return null;
-    }
-
     return (
-      <div>
-        <div
-          id="carouselExampleCaptions"
-          className="carousel slide"
-          data-ride="carousel"
-        >
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carouselExampleCaptions"
-              data-slide-to="0"
-              className="active"
-            ></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-          </ol>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src={
-                  "https://www.worldometers.info/img/flags/" +
-                  this.flags(topCountries[0]) +
-                  "-flag.gif"
-                }
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src={
-                  "https://www.worldometers.info/img/flags/" +
-                  this.flags(topCountries[1]) +
-                  "-flag.gif"
-                }
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src={
-                  "https://www.worldometers.info/img/flags/" +
-                  this.flags(topCountries[2]) +
-                  "-flag.gif"
-                }
-                className="d-block w-100"
-                alt="..."
-              />
-              <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </div>
-            </div>
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleCaptions"
-            role="button"
-            data-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleCaptions"
-            role="button"
-            data-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+      <React.Fragment>
+        <img
+          src={
+            this.flags(this.state.country) !== undefined
+              ? "https://www.countryflags.io/" +
+                this.flags(this.state.country) +
+                "/shiny/64.png"
+              : this.emptyImage()
+          }
+          className="rounded float-left"
+          width="64"
+          height="64"
+        />
+      </React.Fragment>
     );
   }
 }
