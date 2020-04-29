@@ -5,7 +5,7 @@ const Navigation = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <NavLink className="navbar-brand" exact to="/">
-          Navbar
+          Covid19 Report
         </NavLink>
         <button
           className="navbar-toggler"
@@ -41,20 +41,20 @@ const Navigation = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
                 exact
-                to="/"
+                to="/about"
               >
                 Dropdown
               </NavLink>
 
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <NavLink className="dropdown-item" to="/">
+                <NavLink className="dropdown-item" to="/about">
                   Action
                 </NavLink>
-                <NavLink className="dropdown-item" to="/">
+                <NavLink className="dropdown-item" to="/about">
                   Another action
                 </NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item" to="/">
+                <NavLink className="dropdown-item" to="/about">
                   Something else here
                 </NavLink>
               </div>
@@ -62,7 +62,7 @@ const Navigation = () => {
             <li className="nav-item">
               <NavLink
                 className="nav-link disabled"
-                to="/"
+                to="#"
                 tabIndex="-1"
                 aria-disabled="true"
               >

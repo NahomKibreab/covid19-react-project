@@ -125,7 +125,7 @@ class FetchJson extends Component {
             {this.numberWithCommas(this.state.totalConfirmed)}
           </div>
         </div>
-        <Graph />
+        {/* <Graph /> */}
         {/* <WorldFlags topCountries={this.state.topCountries} /> */}
 
         <TableReport
