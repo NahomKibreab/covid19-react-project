@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 class TableList extends Component {
   state = {};
 
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   render() {
     const { country } = this.props;
     let counter = 1;
@@ -24,24 +28,19 @@ class TableList extends Component {
             </NavLink>
             <td key={country.name}>
               <span className="badge badge-primary badge-pill">
-                {country.Confirmed}
+                {this.numberWithCommas(country.Confirmed)}
               </span>
             </td>
             <td>
               <span className="badge badge-success badge-pill">
-                {country.Recovered}
+                {this.numberWithCommas(country.Recovered)}
               </span>
             </td>
             <td>
               <span className="badge badge-danger badge-pill">
-                {country.Deaths}
+                {this.numberWithCommas(country.Deaths)}
               </span>
             </td>
-            {/* <td>
-                          <span className="badge badge-info badge-pill">
-                            {country.Active}
-                          </span>
-                        </td> */}
           </tr>
         ))}
       </React.Fragment>

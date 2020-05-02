@@ -26,13 +26,13 @@ class TableReport extends Component {
   };
 
   handleChange = (e) => {
-    console.log(e.target.value);
+    console.log(e.target.value.trim());
     if (e.target.value.length > 0) {
       const data = [...this.props.report];
       const findCountry = data.filter(function (params) {
         return (
           params.Country_Region.toLowerCase().indexOf(
-            e.target.value.toLowerCase()
+            e.target.value.toLowerCase().trim()
           ) >= 0
         );
       });
@@ -115,7 +115,6 @@ class TableReport extends Component {
               >
                 Deaths
               </th>
-              {/* <th scope="col">Active</th> */}
             </tr>
           </thead>
           <tbody>
