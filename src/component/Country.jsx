@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Papa from "papaparse";
 import queryString from "query-string";
 import WorldFlags from "./WorldFlags";
+import MapChart from "./MapChart";
 
 class Country extends Component {
   state = {
@@ -43,7 +44,11 @@ class Country extends Component {
         <h1 className="display-2" style={{ float: "right" }}>
           {country.Country_Region}
         </h1>
-
+        <MapChart
+          name={country.Country_Region}
+          longitude={country.Long_}
+          latitude={country.Lat}
+        />
         <table className="table table-bordered table-dark">
           <thead>
             <tr>
