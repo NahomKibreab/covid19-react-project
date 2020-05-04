@@ -41,7 +41,7 @@ class Country extends Component {
           country={lowerCaseName.toLowerCase()}
           style={{ float: "left" }}
         />
-        <h1 className="display-2" style={{ float: "right" }}>
+        <h1 className="display-4" style={{ float: "right" }}>
           {country.Country_Region}
         </h1>
         <MapChart
