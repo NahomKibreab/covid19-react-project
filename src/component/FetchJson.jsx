@@ -24,7 +24,7 @@ class FetchJson extends Component {
           return params.Country_Region !== "";
         });
 
-        const sortedData = newData.sort(this.sortByCountryName);
+        const sortedData = newData.sort(this.sortByConfirmed);
 
         let totalConfirmed = 0;
         sortedData.map((total) => {
@@ -111,12 +111,11 @@ class FetchJson extends Component {
         <div className="card text-center">
           <div className="card-header">Featured Covid19</div>
           <div className="card-body">
-            <h5 className="display-3">
-              Coronavirus disease (COVID-19) Pandemic
-            </h5>
+            <h5 className="display-3">COVID-19 Pandemic</h5>
             <p className="card-text">
-              List of Global report for Covid19, this live data gets from Johns
-              Hopkins University
+              Coronavirus disease (COVID-19) is an infectious disease caused by
+              a newly discovered coronavirus. This list of countries with the
+              cases for Covid19 gets data from Johns Hopkins University.
             </p>
             <a
               href="https://coronavirus.jhu.edu/"

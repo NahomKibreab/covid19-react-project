@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import Country from "./Country";
 import TableList from "./TableList";
 class TableReport extends Component {
   // state = {
@@ -77,8 +75,8 @@ class TableReport extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="search by country name"
-                    aria-label="search by country name"
+                    placeholder="search country"
+                    aria-label="search country"
                     aria-describedby="basic-addon1"
                     onChange={this.handleChange}
                   />
