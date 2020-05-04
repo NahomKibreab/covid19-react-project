@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Papa from "papaparse";
 import TableReport from "./TableReport";
-import Graph from "./Graph";
+import Highlight from "./Highlight";
 
 class FetchJson extends Component {
   state = {
     countries: [],
-    topCountries: null,
     totalConfirmed: 0,
+    totalActive: 0,
+    totalRecovered: 0,
+    totalDeath: 0,
   };
 
   componentDidMount() {
@@ -23,27 +25,30 @@ class FetchJson extends Component {
         });
 
         const sortedData = newData.sort(this.sortByCountryName);
-        let totalConfirmed = 0;
 
+        let totalConfirmed = 0;
         sortedData.map((total) => {
           totalConfirmed += Number(total.Confirmed);
         });
-
-        //Top three Country with the highest cases
-        const sortedTopCountry = newData.sort(this.sortByConfirmed);
-        let topCountry = [];
-        for (let i = 0; i < 3; i++) {
-          topCountry.push(sortedTopCountry[i]);
-        }
-
-        let topThree = [];
-        topCountry.map((country) => {
-          topThree.push(country.ISO3.toLowerCase());
+        let totalActive = 0;
+        sortedData.map((total) => {
+          totalActive += Number(total.Active);
         });
-        this.setState({ topCountries: topThree });
+        let totalRecovered = 0;
+        sortedData.map((total) => {
+          totalRecovered += Number(total.Recovered);
+        });
+        let totalDeath = 0;
+        sortedData.map((total) => {
+          totalDeath += Number(total.Deaths);
+        });
+
         this.setState({
           countries: sortedData,
           totalConfirmed: totalConfirmed,
+          totalActive: totalActive,
+          totalRecovered: totalRecovered,
+          totalDeath: totalDeath,
         });
       },
     });
@@ -106,7 +111,9 @@ class FetchJson extends Component {
         <div className="card text-center">
           <div className="card-header">Featured Covid19</div>
           <div className="card-body">
-            <h5 className="card-title">Covid 19 Global Report</h5>
+            <h5 className="display-3">
+              Coronavirus disease (COVID-19) Pandemic
+            </h5>
             <p className="card-text">
               List of Global report for Covid19, this live data gets from Johns
               Hopkins University
@@ -119,14 +126,13 @@ class FetchJson extends Component {
               Johns Hopkins University
             </a>
           </div>
-          <div className="card-footer text-muted">
-            Global Confrimed Cases:{" "}
-            {this.numberWithCommas(this.state.totalConfirmed)}
-          </div>
         </div>
-        {/* <Graph /> */}
-        {/* <WorldFlags topCountries={this.state.topCountries} /> */}
-
+        <Highlight
+          confirmed={this.numberWithCommas(this.state.totalConfirmed)}
+          active={this.numberWithCommas(this.state.totalActive)}
+          recovered={this.numberWithCommas(this.state.totalRecovered)}
+          deaths={this.numberWithCommas(this.state.totalDeath)}
+        />
         <TableReport
           report={this.state.countries}
           onSortByCountryName={this.handleOnSortByCountryName}

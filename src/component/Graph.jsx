@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
+import Papa from "papaparse";
+
 class Graph extends Component {
   state = {};
   constructor(props) {
@@ -7,7 +9,7 @@ class Graph extends Component {
 
     this.state = {
       data: {
-        labels: ["1", "2", "3", "4"],
+        labels: ["Mon/Year", "Mon/Year", "Mon/Year", "Mon/Year"],
         datasets: [
           {
             label: "Cases",
@@ -28,6 +30,22 @@ class Graph extends Component {
       },
     };
   }
+
+  componentDidMount() {
+    const url =
+      "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/web-data/data/cases_time.csv";
+
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      complete: (results) => {
+        let data = results.data.filter(function (params) {
+          return params.Country_Region !== "";
+        });
+      },
+    });
+  }
+
   render() {
     return (
       <div className="mx-auto">

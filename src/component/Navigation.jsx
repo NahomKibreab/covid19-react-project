@@ -24,49 +24,12 @@ const Navigation = () => {
             <li className="nav-item">
               <NavLink className="nav-link" exact to="/">
                 Home
-                {/* Home <span className="sr-only">(current)</span> */}
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink className="nav-link" to="/About">
                 About
-              </NavLink>
-            </li>
-            <li className="nav-item dropdown">
-              <NavLink
-                className="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                exact
-                to="/about"
-              >
-                Dropdown
-              </NavLink>
-
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <NavLink className="dropdown-item" to="/about">
-                  Action
-                </NavLink>
-                <NavLink className="dropdown-item" to="/about">
-                  Another action
-                </NavLink>
-                <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item" to="/about">
-                  Something else here
-                </NavLink>
-              </div>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link disabled"
-                to="#"
-                tabIndex="-1"
-                aria-disabled="true"
-              >
-                Disabled
               </NavLink>
             </li>
           </ul>

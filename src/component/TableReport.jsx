@@ -19,14 +19,12 @@ class TableReport extends Component {
     return { country: props.report };
   }
   sortByCountryName = (A, B) => {
-    console.log("sortByCountryName");
     if (A.Country_Region > B.Country_Region) return 1;
     else if (A.Country_Region < B.Country_Region) return -1;
     else return 0;
   };
 
   handleChange = (e) => {
-    console.log(e.target.value.trim());
     if (e.target.value.length > 0) {
       const data = [...this.props.report];
       const findCountry = data.filter(function (params) {
@@ -43,7 +41,6 @@ class TableReport extends Component {
   };
 
   onCountryClicked = (e) => {
-    console.log(e);
     return e;
   };
   render() {

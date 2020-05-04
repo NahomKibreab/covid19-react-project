@@ -13,13 +13,12 @@ const geoUrl =
 const MapChart = (props) => {
   const nLat = props.latitude * -1;
   const nLong = props.longitude * -1;
-  console.log(nLong * -1);
   return (
     <ComposableMap
       projection="geoAzimuthalEqualArea"
       projectionConfig={{
         rotate: [nLong, nLat, 0],
-        scale: 400,
+        scale: 700,
       }}
     >
       <Graticule stroke="#EAEAEC" />
@@ -38,8 +37,8 @@ const MapChart = (props) => {
       <Marker coordinates={[nLong * -1, nLat * -1]}>
         <g
           fill="none"
-          stroke="#FF5533"
-          strokeWidth="2"
+          stroke="#FA5533"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           transform="translate(-12, -24)"
@@ -52,8 +51,8 @@ const MapChart = (props) => {
           y="-30"
           style={{
             fontFamily: "system-ui",
-            fill: "#5D5A6D",
-            fontSize: "35",
+            fill: "#263A72",
+            fontSize: "50",
             fontWeight: "bold",
           }}
         >
