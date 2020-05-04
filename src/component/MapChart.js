@@ -18,7 +18,7 @@ const MapChart = (props) => {
       projection="geoAzimuthalEqualArea"
       projectionConfig={{
         rotate: [nLong, nLat, 0],
-        scale: 700,
+        scale: 500,
       }}
     >
       <Graticule stroke="#EAEAEC" />
