@@ -43,7 +43,7 @@ class TableReport extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="table-responsive">
         <table className="table table-striped table-dark table-hover">
           <thead>
             <tr>
