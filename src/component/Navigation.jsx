@@ -4,7 +4,7 @@ const Navigation = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <NavLink className="navbar-brand" exact to="/">
+        <NavLink className="navbar-brand" exact to="/covid19-react-project">
           Covid19 Report
         </NavLink>
         <button
@@ -22,13 +22,13 @@ const Navigation = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/">
+              <NavLink className="nav-link" exact to="/covid19-react-project">
                 Home
               </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink className="nav-link" to="/About">
+              <NavLink className="nav-link" to="/covid19-react-project/About">
                 About
               </NavLink>
             </li>

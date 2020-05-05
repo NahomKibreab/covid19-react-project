@@ -12,9 +12,9 @@ function App() {
     <div>
       <Navigation />
       <Switch>
-        <Route path="/about" component={About} />
-        <Route path="/country" component={Country} />
-        <Route path="/" component={FetchJson} />
+        <Route path="/covid19-react-project/about" component={About} />
+        <Route path="/covid19-react-project/country" component={Country} />
+        <Route path="/covid19-react-project" component={FetchJson} />
       </Switch>
       <Footer />
     </div>

@@ -20,7 +20,7 @@ class TableList extends Component {
               style={{ color: "white" }}
               exact
               to={{
-                pathname: "/country",
+                pathname: "/covid19-react-project/country",
                 search: "?id=" + country.UID,
               }}
             >
