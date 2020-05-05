@@ -7,7 +7,10 @@ class About extends Component {
   render() {
     return (
       <div className="container" style={{ marginTop: "5%" }}>
-        <div class="card mx-auto">
+        <div
+          class="card mx-auto"
+          style={{ maxWidth: "25rem", textAlign: "center" }}
+        >
           <img
             src={imageProfile}
             class="card-img-top rounded "
