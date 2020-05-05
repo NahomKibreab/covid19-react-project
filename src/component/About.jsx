@@ -6,10 +6,13 @@ class About extends Component {
 
   render() {
     return (
-      <div className="container" style={{ marginTop: "5%" }}>
+      <div
+        className="container"
+        style={{ marginTop: "5%", marginBottom: "5%" }}
+      >
         <div
           class="card mx-auto"
-          style={{ maxWidth: "25rem", textAlign: "center" }}
+          style={{ maxWidth: "470px", textAlign: "center", objectFit: "cover" }}
         >
           <img
             src={imageProfile}
@@ -17,8 +20,11 @@ class About extends Component {
             alt="nahom photo"
           />
           <div class="card-body">
-            <h5 class="card-title">Nahom Mehanzel</h5>
-            <p class="card-text">ComIT React Development Covid19 Project</p>
+            <p style={{ fontStyle: "italic" }}>Developed by</p>
+            <div class="display-4">Nahom Mehanzel</div>
+            <p class="card-text">
+              ComIT React Development <br /> Covid19 Project
+            </p>
             <hr />
             <a
               href="https://www.linkedin.com/in/nahom-mehanzel/"
