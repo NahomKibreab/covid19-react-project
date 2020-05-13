@@ -3,6 +3,8 @@ import Papa from "papaparse";
 import queryString from "query-string";
 import WorldFlags from "./WorldFlags";
 import MapChart from "./MapChart";
+import Graph from "./Graph";
+import nknahom from "./nknahom_pro.jpg";
 
 class Country extends Component {
   state = {
@@ -37,18 +39,61 @@ class Country extends Component {
     const lowerCaseName = "" + country.Country_Region;
     return (
       <div className="container">
-        <WorldFlags
-          country={lowerCaseName.toLowerCase()}
-          style={{ float: "left" }}
-        />
-        <h1 className="display-4" style={{ float: "right" }}>
-          {country.Country_Region}
-        </h1>
-        <MapChart
-          name={country.Country_Region}
-          longitude={country.Long_}
-          latitude={country.Lat}
-        />
+        <div style={{ width: "100%", display: "inline-block" }}>
+          <WorldFlags
+            country={lowerCaseName.toLowerCase()}
+            style={{ float: "left" }}
+          />
+
+          <h1 className="display-4" style={{ float: "right" }}>
+            {country.Country_Region}
+          </h1>
+        </div>
+        <div
+          id="carouselExampleInterval"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="10000">
+              <div class="d-block w-100">
+                <MapChart
+                  name={country.Country_Region}
+                  longitude={country.Long_}
+                  latitude={country.Lat}
+                />
+              </div>
+            </div>
+            <div class="carousel-item" data-interval="2000">
+              <div class="d-block w-100">
+                {country.Country_Region !== undefined ? (
+                  <Graph country={country.Country_Region} />
+                ) : null}
+              </div>
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleInterval"
+            role="button"
+            data-slide="prev"
+            style={{ backgroundColor: "gray", width: "3%" }}
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleInterval"
+            role="button"
+            data-slide="next"
+            style={{ backgroundColor: "gray", width: "3%" }}
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
         <table className="table table-bordered table-dark">
           <thead>
             <tr>

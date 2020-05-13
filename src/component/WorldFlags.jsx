@@ -35,9 +35,10 @@ class WorldFlags extends Component {
   emptyImage = () => {
     return "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg";
   };
+
   render() {
     return (
-      <React.Fragment>
+      <div>
         <img
           src={
             this.flags(this.state.country) !== undefined
@@ -50,7 +51,7 @@ class WorldFlags extends Component {
           width="64"
           height="64"
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
