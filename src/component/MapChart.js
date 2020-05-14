@@ -14,7 +14,7 @@ const MapChart = (props) => {
   const nLat = props.latitude * -1;
   const nLong = props.longitude * -1;
   return (
-    <div style={{ maxWidth: "76.5vw", margin: "auto" }}>
+    <div style={{ margin: "auto" }}>
       <ComposableMap
         projection="geoAzimuthalEqualArea"
         projectionConfig={{
