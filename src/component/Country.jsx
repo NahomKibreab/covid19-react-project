@@ -64,7 +64,7 @@ class Country extends Component {
                 />
               </div>
             </div>
-            <div class="carousel-item" data-interval="2000">
+            <div class="carousel-item" data-interval="10000">
               <div class="d-block w-100">
                 {country.Country_Region !== undefined ? (
                   <Graph country={country.Country_Region} />
