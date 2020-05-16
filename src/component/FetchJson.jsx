@@ -24,6 +24,8 @@ class FetchJson extends Component {
           return params.Country_Region !== "";
         });
 
+        console.log(newData.map((x) => x.Confirmed | 0));
+
         const sortedData = newData.sort(this.sortByConfirmed);
 
         let totalConfirmed = 0;

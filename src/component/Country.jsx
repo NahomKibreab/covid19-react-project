@@ -106,7 +106,7 @@ class Country extends Component {
               <th scope="row">Confirmed</th>
               <td>
                 <span className="badge badge-primary badge-pill">
-                  {this.numberWithCommas(country.Confirmed)}
+                  {this.numberWithCommas(country.Confirmed | 0)}
                 </span>
               </td>
             </tr>
@@ -114,7 +114,7 @@ class Country extends Component {
               <th scope="row">Active</th>
               <td>
                 <span className="badge badge-warning badge-pill">
-                  {this.numberWithCommas(country.Active)}
+                  {this.numberWithCommas(country.Active | 0)}
                 </span>
               </td>
             </tr>
@@ -122,7 +122,7 @@ class Country extends Component {
               <th scope="row">Recovered</th>
               <td>
                 <span className="badge badge-success badge-pill">
-                  {this.numberWithCommas(country.Recovered)}
+                  {this.numberWithCommas(country.Recovered | 0)}
                 </span>
               </td>
             </tr>
@@ -130,7 +130,7 @@ class Country extends Component {
               <th scope="row">Deaths</th>
               <td>
                 <span className="badge badge-danger badge-pill">
-                  {this.numberWithCommas(country.Deaths)}
+                  {this.numberWithCommas(country.Deaths | 0)}
                 </span>
               </td>
             </tr>

@@ -28,17 +28,17 @@ class TableList extends Component {
             </NavLink>
             <td key={country.name}>
               <span className="badge badge-primary badge-pill">
-                {this.numberWithCommas(country.Confirmed)}
+                {this.numberWithCommas(country.Confirmed | 0)}
               </span>
             </td>
             <td>
               <span className="badge badge-success badge-pill">
-                {this.numberWithCommas(country.Recovered)}
+                {this.numberWithCommas(country.Recovered | 0)}
               </span>
             </td>
             <td>
               <span className="badge badge-danger badge-pill">
-                {this.numberWithCommas(country.Deaths)}
+                {this.numberWithCommas(country.Deaths | 0)}
               </span>
             </td>
           </tr>
