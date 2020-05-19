@@ -21,7 +21,11 @@ class FetchJson extends Component {
       header: true,
       complete: (results) => {
         let newData = results.data.filter(function (params) {
-          return params.Country_Region !== "";
+          return (
+            params.Country_Region !== "" &&
+            params.Country_Region !== "Diamond Princess" &&
+            params.Country_Region !== "MS Zaandam"
+          );
         });
 
         console.log(newData.map((x) => x.Confirmed | 0));

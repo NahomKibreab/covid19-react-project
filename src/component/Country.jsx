@@ -4,7 +4,6 @@ import queryString from "query-string";
 import WorldFlags from "./WorldFlags";
 import MapChart from "./MapChart";
 import Graph from "./Graph";
-import nknahom from "./nknahom_pro.jpg";
 
 class Country extends Component {
   state = {
